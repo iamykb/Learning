@@ -18,3 +18,15 @@ data volume, ingestion frequency, data types, and governance needs with Unity Ca
 Lakeflow Connect and other managed connectors into UnityCatalog–governed Delta tables.
 
 
+
+#SPARK SQL
+
+Reading Files : 
+SELECT * FROM read_files('<path to json file or folder>',  format => 'json',  multiLine => true)
+SELECT * FROM json.<path to json file or folder>
+SELECT * FROM binaryfile.<path to json file or folder>(picture file)
+
+
+File Metadata: 
+SELECT _metadata.file_path AS file_path,*  FROM json.`/Volumes/gizmobox/landing/operational_data/customers`
+
