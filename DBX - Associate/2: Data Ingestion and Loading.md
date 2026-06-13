@@ -10,15 +10,30 @@ data volume, ingestion frequency, data types, and governance needs with Unity Ca
 
 
 
-# SPARK SQL
 
 ## Reading Files : 
 SELECT * FROM read_files('<path to json file or folder>',  format => 'json',  multiLine => true)    
 SELECT * FROM json.<path to json file or folder>    
 SELECT * FROM binaryfile.<path to json file or folder>(picture file)   
 
-
 ## File Metadata: 
-SELECT _metadata.file_path AS file_path,*  FROM json.`/Volumes/gizmobox/landing/operational_data/customers`    
+SELECT _metadata.file_path AS file_path,*  FROM json.'<path to json file or folder>'   
+            - file_path
+            - file_name
+            - file_size
+            - file_modification_time
+
+- DESCRIBE EXTENDED will provided full properties
 
 
+# SPARK SQL
+
+    spark.sql - Issue SQL Query
+    spark.read.format('json').load('path to json file or folder') - read a file   
+    spark.table('gizmobox.bronze.v_addresses')     - read a table
+    display(df)     - display a data frame    
+    dbutils.data.summarize(df)  - Data profiling    
+
+    https://learn.microsoft.com/en-us/azure/databricks/sql/language-manual/functions/regexp_extract    
+
+    
